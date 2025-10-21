@@ -1,5 +1,3 @@
-
-9:57 AM
 pipeline{
     agent any
 
