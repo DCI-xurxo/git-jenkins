@@ -27,3 +27,7 @@ pipeline{
         }
     }
 }
+
+tables()
+print("Hello")
+print("this is aws jenkins")
