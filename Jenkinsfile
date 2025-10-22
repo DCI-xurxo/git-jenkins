@@ -1,23 +1,28 @@
 pipeline{
     agent any
-
+    
+    triggers {
+        pollSCM('* * * * *')
+    }
+    
     stages{
-        stage('Code Checkout'){
+        stage('Repository Location'){
             steps{
-                echo "Checking out code from git repository"
-                checkout scm
-
-            }            
+                echo 'Connecting to the git repository...'
+                git branch: 'main', url: 'https://github.com/DCI-xurxo/git-jenkins.git'
+            }
         }
+
         stage('Run Python Script'){
             steps{
-                echo "Running the Python script from the git repository"
-                sh 'python3 numbers.py'
+                echo 'Running the Python script...'
+                sh 'python3 test.py'
             }
         }
     }
-    post {
-        always {
+
+    post{
+        always{
             echo 'Pipeline execution completed.'
         }
     }
